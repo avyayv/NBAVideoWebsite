@@ -1,0 +1,41 @@
+body {
+  background: #74ebd5;
+  min-height: 100vh;
+}
+
+.search {
+  width: 500px;
+}
+
+.search-div {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.video-player {
+  display: flex;
+  justify-content: center;
+}
+
+video {
+  border-radius: 20px; 
+}
+
+.horizontal-next {
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+.shots-table {
+  width: 450px;
+  height: 700px;
+  overflow:auto;
+}
