@@ -38,7 +38,7 @@ def home():
     )
 
     response = jsonify(response_dict)
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    response.headers.add('Access-Control-Allow-Origin', 'https://avyayv.github.io')
 
     return response 
 
