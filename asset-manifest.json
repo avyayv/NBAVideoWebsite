@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/NBAVideoWebsite/static/css/main.afebe5bd.chunk.css",
-    "main.js": "/NBAVideoWebsite/static/js/main.9e5f5555.chunk.js",
-    "main.js.map": "/NBAVideoWebsite/static/js/main.9e5f5555.chunk.js.map",
-    "runtime-main.js": "/NBAVideoWebsite/static/js/runtime-main.cb23f7e7.js",
-    "runtime-main.js.map": "/NBAVideoWebsite/static/js/runtime-main.cb23f7e7.js.map",
+    "main.js": "/NBAVideoWebsite/static/js/main.ee3c8fe9.chunk.js",
+    "main.js.map": "/NBAVideoWebsite/static/js/main.ee3c8fe9.chunk.js.map",
+    "runtime-main.js": "/NBAVideoWebsite/static/js/runtime-main.ee4778ef.js",
+    "runtime-main.js.map": "/NBAVideoWebsite/static/js/runtime-main.ee4778ef.js.map",
     "static/css/2.818011ed.chunk.css": "/NBAVideoWebsite/static/css/2.818011ed.chunk.css",
-    "static/js/2.3731e779.chunk.js": "/NBAVideoWebsite/static/js/2.3731e779.chunk.js",
-    "static/js/2.3731e779.chunk.js.map": "/NBAVideoWebsite/static/js/2.3731e779.chunk.js.map",
-    "static/js/3.9b127538.chunk.js": "/NBAVideoWebsite/static/js/3.9b127538.chunk.js",
-    "static/js/3.9b127538.chunk.js.map": "/NBAVideoWebsite/static/js/3.9b127538.chunk.js.map",
+    "static/js/2.89953a49.chunk.js": "/NBAVideoWebsite/static/js/2.89953a49.chunk.js",
+    "static/js/2.89953a49.chunk.js.map": "/NBAVideoWebsite/static/js/2.89953a49.chunk.js.map",
+    "static/js/3.364319e0.chunk.js": "/NBAVideoWebsite/static/js/3.364319e0.chunk.js",
+    "static/js/3.364319e0.chunk.js.map": "/NBAVideoWebsite/static/js/3.364319e0.chunk.js.map",
     "index.html": "/NBAVideoWebsite/index.html",
     "static/css/2.818011ed.chunk.css.map": "/NBAVideoWebsite/static/css/2.818011ed.chunk.css.map",
     "static/css/main.afebe5bd.chunk.css.map": "/NBAVideoWebsite/static/css/main.afebe5bd.chunk.css.map",
-    "static/js/2.3731e779.chunk.js.LICENSE.txt": "/NBAVideoWebsite/static/js/2.3731e779.chunk.js.LICENSE.txt"
+    "static/js/2.89953a49.chunk.js.LICENSE.txt": "/NBAVideoWebsite/static/js/2.89953a49.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.cb23f7e7.js",
+    "static/js/runtime-main.ee4778ef.js",
     "static/css/2.818011ed.chunk.css",
-    "static/js/2.3731e779.chunk.js",
+    "static/js/2.89953a49.chunk.js",
     "static/css/main.afebe5bd.chunk.css",
-    "static/js/main.9e5f5555.chunk.js"
+    "static/js/main.ee3c8fe9.chunk.js"
   ]
 }
