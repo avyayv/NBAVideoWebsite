@@ -1,17 +1,21 @@
 import {Button, InputGroup, FormControl}  from 'react-bootstrap';
 import React from 'react';
+import jsonData from "./PlayerNameToId.json";
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 
 class InputBox extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            playerId: "0"
+            playerName: "0"
         }
     }
 
     makeRequest = () => {
-        const url = `https://nbastatsvideoapi-n4b6xkst7q-de.a.run.app/?player_id=${this.state.playerId}`;
+        let playerId = jsonData[this.state.playerName]
+        const url = `https://nbastatsvideoapi-n4b6xkst7q-de.a.run.app/?player_id=${playerId}`;
         fetch(url)
             .then(res => res.json())
             .then(
@@ -30,10 +34,12 @@ class InputBox extends React.Component {
                 <div className="search">
                     <InputGroup className="search-box">
                         
-                        <FormControl
-                            placeholder="Player ID"
+                        <Typeahead
+                            id="basic-typeahead-single"
+                            placeholder="Player Name"
                             aria-describedby="basic-addon1"
-                            onChange={e => this.setState({ playerId: e.target.value })}
+                            options={Object.keys(jsonData)}
+                            onChange={selected => this.setState({ playerName: selected })}
                         />
 
                         <Button variant="success" onClick={this.makeRequest} id="button-addon2">
