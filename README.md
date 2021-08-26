@@ -13,5 +13,5 @@ I created a simple React app which allows the user to input the player name and 
 ## Todo
 - Scrape more information about each play
 - Scrape turnover, rebounds, etc. (what 3ball.io had)
-- Save plays (use React router to do so)
+- Save plays (use React router to make it multi page, using local storage)
 - Improve overall UI
