@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/nbavideosearch/static/css/main.17a62d55.chunk.css",
+    "main.js": "/nbavideosearch/static/js/main.9e5f5555.chunk.js",
+    "main.js.map": "/nbavideosearch/static/js/main.9e5f5555.chunk.js.map",
+    "runtime-main.js": "/nbavideosearch/static/js/runtime-main.91aade9c.js",
+    "runtime-main.js.map": "/nbavideosearch/static/js/runtime-main.91aade9c.js.map",
+    "static/css/2.818011ed.chunk.css": "/nbavideosearch/static/css/2.818011ed.chunk.css",
+    "static/js/2.3731e779.chunk.js": "/nbavideosearch/static/js/2.3731e779.chunk.js",
+    "static/js/2.3731e779.chunk.js.map": "/nbavideosearch/static/js/2.3731e779.chunk.js.map",
+    "static/js/3.9b127538.chunk.js": "/nbavideosearch/static/js/3.9b127538.chunk.js",
+    "static/js/3.9b127538.chunk.js.map": "/nbavideosearch/static/js/3.9b127538.chunk.js.map",
+    "index.html": "/nbavideosearch/index.html",
+    "static/css/2.818011ed.chunk.css.map": "/nbavideosearch/static/css/2.818011ed.chunk.css.map",
+    "static/css/main.17a62d55.chunk.css.map": "/nbavideosearch/static/css/main.17a62d55.chunk.css.map",
+    "static/js/2.3731e779.chunk.js.LICENSE.txt": "/nbavideosearch/static/js/2.3731e779.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.91aade9c.js",
+    "static/css/2.818011ed.chunk.css",
+    "static/js/2.3731e779.chunk.js",
+    "static/css/main.17a62d55.chunk.css",
+    "static/js/main.9e5f5555.chunk.js"
+  ]
+}
