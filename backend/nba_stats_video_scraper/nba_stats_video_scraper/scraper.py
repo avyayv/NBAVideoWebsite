@@ -85,6 +85,8 @@ class VideoScraper:
 
         all_teams_df = pd.DataFrame()
 
+        team_to_number_of_attempts = {}
+
         for team in teams:
 
             try:
@@ -135,6 +137,7 @@ class VideoScraper:
                     "GAME_EVENT_ID",
                     "PLAYER_ID",
                     "PLAYER_NAME",
+                    "Description",
                     "TEAM_ID",
                     "TEAM_NAME",
                     "SHOT_TYPE",
@@ -144,6 +147,8 @@ class VideoScraper:
                     "SHOT_ATTEMPTED_FLAG",
                     "SHOT_MADE_FLAG",
                     "VideoURL",
+                    "HTM",
+                    "VTM",
                 ]
 
                 full_team_df = pd.merge(
@@ -152,7 +157,8 @@ class VideoScraper:
                     how="left",
                     left_on=["GameID", "EventID"],
                     right_on=["GAME_ID", "GAME_EVENT_ID"],
-                )[columns]
+                )
+                print(full_team_df.columns)
 
                 all_teams_df = pd.concat([all_teams_df, full_team_df])
                 print(f"{team} worked")
@@ -160,10 +166,17 @@ class VideoScraper:
                 time.sleep(0.5)
 
             except (json.JSONDecodeError, requests.exceptions.ChunkedEncodingError) as error:
-                requests.session().close()
                 print(error)
                 print(f"{team} was an error")
-                teams.append(team)
+
+                if team in team_to_number_of_attempts:
+                    team_to_number_of_attempts[team] += 1 
+                else:
+                    team_to_number_of_attempts[team] = 1
+
+                if team_to_number_of_attempts[team] < 5:
+                    teams.append(team)
+
                 continue
 
         return all_teams_df
