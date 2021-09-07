@@ -112,7 +112,7 @@ class VideoScraper:
                         "TeamID": team,
                         "GameID": video_metadata["gi"],
                         "EventID": video_metadata["ei"],
-                        "GameDate": video_metadata["gc"]
+                        "GameDate": video_metadata["gc"],
                         "Description": video_metadata["dsc"],
                         "HomeTeam": video_metadata["ha"],
                         "AwayTeam": video_metadata["va"],
