@@ -11,7 +11,9 @@ from nba_stats_video_scraper import database
 class VideoScraper:
     def __init__(self):
 
-        self.seasons = ["2020-21"]
+        self.seasons = ["2019-20", "2020-21"]
+        self.season_types = ["Regular+Season", "PlayIn", "Playoffs"]
+        self.context_measures = ["FGA", "PF", "REB", "TOV"]
 
         self.headers = {
             "Accept": "application/json, text/plain, */*",
@@ -27,12 +29,11 @@ class VideoScraper:
             "x-nba-stats-token": "true",
         }
 
-        self.season_types = ["Regular+Season", "PlayIn", "Playoffs"]
 
-    def get_video_url(self, team_id: str, season: str, season_type: str) -> str:
+    def get_video_url(self, team_id: str, season: str, season_type: str, context_measure: str) -> str:
         url = (
             "https://stats.nba.com/stats/videodetailsasset?AheadBehind=&CFID=33"
-            + f"&CFPARAMS={season}&ClutchTime=&Conference=&ContextFilter=&ContextMeasure=FGA"
+            + f"&CFPARAMS={season}&ClutchTime=&Conference=&ContextFilter=&ContextMeasure={context_measure}" #FGA
             + "&DateFrom=&DateTo=&Division=&EndPeriod=10&EndRange=28800&GROUP_ID=&GameEventID=&GameID="
             + "&GameSegment=&GroupID=&GroupMode=&GroupQuantity=5&LastNGames=0&LeagueID=00&"
             + f"Location=&Month=0&OnOff=&OpponentTeamID=0&Outcome=&PORound=0&Period=0&PlayerID=0"
@@ -56,10 +57,10 @@ class VideoScraper:
             + "&TwoWay=0&VsConference=&VsDivision=&Weight="
         )
 
-    def get_shot_chart_url(self, team_id: str, season: str, season_type: str) -> str:
+    def get_shot_chart_url(self, team_id: str, season: str, season_type: str, context_measure: str) -> str:
         return (
             "https://stats.nba.com/stats/shotchartdetail?AheadBehind=&CFID=33"
-            + f"&CFPARAMS={season}&ClutchTime=&Conference=&ContextFilter=&ContextMeasure=FGA"
+            + f"&CFPARAMS={season}&ClutchTime=&Conference=&ContextFilter=&ContextMeasure={context_measure}"
             + "&DateFrom=&DateTo=&Division=&EndPeriod=10&EndRange=28800&GROUP_ID="
             + "&GameEventID=&GameID=&GameSegment=&GroupID=&GroupMode=&GroupQuantity=5"
             + "&LastNGames=0&LeagueID=00&Location=&Month=0&OnOff=&OpponentTeamID=0"
@@ -79,7 +80,7 @@ class VideoScraper:
         )
         return list(df["TEAM_ID"].unique())
 
-    def get_videos_df(self, season: str, season_type: str) -> pd.DataFrame:
+    def get_videos_df(self, season: str, season_type: str, context_measure: str) -> pd.DataFrame:
 
         teams = self.get_all_teams(season)
 
@@ -90,11 +91,11 @@ class VideoScraper:
         for team in teams:
 
             try:
-                team_video_url = self.get_video_url(team, season, season_type)
+                team_video_url = self.get_video_url(team, season, season_type, context_measure)
 
                 print(team, season, season_type)
-                time.sleep(10)
 
+                time.sleep(2)
                 team_video_json = requests.get(
                     team_video_url, headers=self.headers
                 ).json()
@@ -121,7 +122,7 @@ class VideoScraper:
                 if len(team_video_df) == 0:
                     continue
 
-                shot_chart_url = self.get_shot_chart_url(team, season, season_type)
+                shot_chart_url = self.get_shot_chart_url(team, season, season_type, context_measure)
                 shot_chart_json = requests.get(
                     shot_chart_url, headers=self.headers
                 ).json()
@@ -133,8 +134,8 @@ class VideoScraper:
                 )
 
                 columns = [
-                    "GAME_ID",
-                    "GAME_EVENT_ID",
+                    "GameID",
+                    "EventID",
                     "PLAYER_ID",
                     "PLAYER_NAME",
                     "Description",
@@ -160,14 +161,13 @@ class VideoScraper:
                 )
 
                 all_teams_df = pd.concat([all_teams_df, full_team_df])[columns]
+
                 print(f"{team} worked")
-                break
 
                 time.sleep(0.5)
 
             except (json.JSONDecodeError, requests.exceptions.ChunkedEncodingError) as error:
-                print(error)
-                print(f"{team} was an error")
+                print(f"{team} gave an {error}")
 
                 if team in team_to_number_of_attempts:
                     team_to_number_of_attempts[team] += 1 
@@ -187,14 +187,11 @@ class VideoScraper:
 
         self.all_data = pd.DataFrame()
 
-        for season in self.seasons:
-            for season_type in self.season_types:
-                season_season_type_df = self.get_videos_df(season, season_type)
-                self.all_data = pd.concat([self.all_data, season_season_type_df])
-                break
-
-        print(self.all_data)
-
-        self.all_data.to_sql("videos", engine, if_exists="replace", chunksize=2000)
+        for context_measure in self.context_measures:
+            for season in self.seasons:
+                for season_type in self.season_types:
+                    season_season_type_df = self.get_videos_df(season, season_type, context_measure)
+                    self.all_data = pd.concat([self.all_data, season_season_type_df])
+                    self.all_data.to_sql("videos", engine, chunksize=5000, if_exists='replace', method='multi')
 
         print("Success!")

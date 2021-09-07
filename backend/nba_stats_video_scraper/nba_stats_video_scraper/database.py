@@ -17,7 +17,7 @@ def init_tcp_connection_engine():
 
     pool = sqlalchemy.create_engine(
         sqlalchemy.engine.url.URL.create(
-            drivername="postgresql+pg8000",
+            drivername="postgresql",
             username=db_user,  # e.g. "my-database-user"
             password=db_pass,  # e.g. "my-database-password"
             host=db_hostname,  # e.g. "127.0.0.1"
