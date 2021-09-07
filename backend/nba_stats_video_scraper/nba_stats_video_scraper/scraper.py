@@ -112,7 +112,12 @@ class VideoScraper:
                         "TeamID": team,
                         "GameID": video_metadata["gi"],
                         "EventID": video_metadata["ei"],
+                        "GameDate": video_metadata["gc"]
                         "Description": video_metadata["dsc"],
+                        "HomeTeam": video_metadata["ha"],
+                        "AwayTeam": video_metadata["va"],
+                        "HomeTeamScore": video_metadata["hpa"],
+                        "AwayTeamScore": video_metadata["vpa"],
                         "VideoURL": video_url,
                     }
                     team_dicts.append(video_dict)
@@ -136,6 +141,7 @@ class VideoScraper:
                 columns = [
                     "GameID",
                     "EventID",
+                    "GameDate",
                     "PLAYER_ID",
                     "PLAYER_NAME",
                     "Description",
@@ -145,11 +151,12 @@ class VideoScraper:
                     "SHOT_DISTANCE",
                     "LOC_X",
                     "LOC_Y",
-                    "SHOT_ATTEMPTED_FLAG",
                     "SHOT_MADE_FLAG",
                     "VideoURL",
-                    "HTM",
-                    "VTM",
+                    "HomeTeam",
+                    "AwayTeam",
+                    "HomeTeamScore",
+                    "AwayTeamScore",
                 ]
 
                 full_team_df = pd.merge(
@@ -192,6 +199,7 @@ class VideoScraper:
                 for season_type in self.season_types:
                     season_season_type_df = self.get_videos_df(season, season_type, context_measure)
                     self.all_data = pd.concat([self.all_data, season_season_type_df])
-                    self.all_data.to_sql("videos", engine, chunksize=5000, if_exists='replace', method='multi')
+
+            self.all_data.to_sql("videos", engine, chunksize=5000, if_exists='replace', method='multi')
 
         print("Success!")
