@@ -1,5 +1,5 @@
 # Simple NBA Video Searching Website
-**Website is currently not functional because I am updating the backend.
+**Website is currently not functional as I am updating the backend. **
 
 With 3ball.io no longer available to view NBA clips, I made a simpler version of the app. I hope to add more features (viewing turnovers, rebounds, etc.) that 3ball.io had, but also add more features that allow users to save clips for future usage (using local storage or similar). 
 
