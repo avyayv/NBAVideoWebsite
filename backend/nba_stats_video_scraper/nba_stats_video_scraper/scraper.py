@@ -5,7 +5,7 @@ from typing import List
 import pandas as pd
 import requests
 
-from nba_stats_video_scraper import  database
+from nba_stats_video_scraper import database
 
 
 class VideoScraper:
@@ -158,10 +158,10 @@ class VideoScraper:
                     left_on=["GameID", "EventID"],
                     right_on=["GAME_ID", "GAME_EVENT_ID"],
                 )
-                print(full_team_df.columns)
 
-                all_teams_df = pd.concat([all_teams_df, full_team_df])
+                all_teams_df = pd.concat([all_teams_df, full_team_df])[columns]
                 print(f"{team} worked")
+                break
 
                 time.sleep(0.5)
 
@@ -191,7 +191,10 @@ class VideoScraper:
             for season_type in self.season_types:
                 season_season_type_df = self.get_videos_df(season, season_type)
                 self.all_data = pd.concat([self.all_data, season_season_type_df])
+                break
 
-        self.all_data.to_sql("videos", engine, if_exists="append")
+        print(self.all_data)
+
+        self.all_data.to_sql("videos", engine, if_exists="replace", chunksize=2000)
 
         print("Success!")
