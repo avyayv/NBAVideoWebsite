@@ -17,10 +17,10 @@ class Videos(Base):
     SHOT_DISTANCE = Column(Integer)
     LOC_X = Column(Integer)
     LOC_Y = Column(Integer)
-    SHOT_ATTEMPTED_FLAG = Column(Integer)
     SHOT_MADE_FLAG = Column(Integer)
     HTM = Column(String(16))
     VTM = Column(String(16))
+    VideoURL = Column(String(256))
 
     def as_dict(self):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
