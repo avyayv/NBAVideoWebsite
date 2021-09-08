@@ -147,7 +147,7 @@ class VideoScraper:
                     "Description",
                     "TEAM_ID",
                     "TEAM_NAME",
-                    "SHOT_TYPE",
+                    "ACTION_TYPE",
                     "SHOT_DISTANCE",
                     "LOC_X",
                     "LOC_Y",

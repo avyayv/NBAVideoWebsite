@@ -3,6 +3,9 @@ import os
 
 import sqlalchemy
 from dotenv import load_dotenv
+from sqlalchemy.orm import sessionmaker
+
+from nba_stats_video_api import orm
 
 load_dotenv()  # take environment variables from .env.
 
@@ -28,10 +31,20 @@ def init_tcp_connection_engine():
         ),
     )
     pool.dialect.description_encoding = None
-    return pool
+    Session = sessionmaker(bind=pool)
+    session = Session()
+
+    return session
 
 
-def execute_query(query: str, pool):
-    with pool.connect() as con:
-        res = con.execute(query)
-        return [dict(r) for r in res]
+def execute_query(session, player_id: str, team_id: str):
+    
+    all_vids = session.query(orm.Videos)
+
+    if player_id != None:
+        all_vids = all_vids.filter(orm.Videos.PLAYER_ID == int(player_id)) 
+
+    if team_id != None:
+        all_vids = all_vids.filter(orm.Videos.TEAM_ID == int(team_id))
+
+    return [vid.as_dict() for vid in all_vids]

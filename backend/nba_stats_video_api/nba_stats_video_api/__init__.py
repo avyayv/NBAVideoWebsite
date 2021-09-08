@@ -15,27 +15,7 @@ def home():
     team_id = request.args.get("team_id")
     made_shot = request.args.get("made_shot")
 
-    where_clause = ""
-
-    if player_id != None:
-        where_clause += f'"PLAYER_ID" = {player_id}'
-
-    if team_id != None:
-        if where_clause != "":
-            where_clause += " AND "
-        where_clause += f'"TEAM_ID" = {team_id}'
-
-    if made_shot != None:
-        if where_clause != "":
-            where_clause += " AND "
-        where_clause += f'"SHOT_MADE_FLAG" = {made_shot}'
-
-    if where_clause != "":
-        where_clause = f" WHERE {where_clause}"
-
-    response_dict = database.execute_query(
-        f"SELECT * FROM videos {where_clause};", pool
-    )
+    response_dict = database.execute_query(pool, player_id, team_id)
 
     response = jsonify(response_dict)
     response.headers.add('Access-Control-Allow-Origin', 'https://avyayv.github.io')
