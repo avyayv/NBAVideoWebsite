@@ -1,4 +1,4 @@
-import {Button, InputGroup, FormControl}  from 'react-bootstrap';
+import { Button, InputGroup }  from 'react-bootstrap';
 import React from 'react';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
@@ -17,6 +17,7 @@ class InputBox extends React.Component {
     getPlayersAndTeams = () => {
 
         const playersUrl = `https://nbastatsvideoapi-n4b6xkst7q-de.a.run.app/players`;
+
         fetch(playersUrl)
             .then(res => res.json())
             .then(
@@ -29,6 +30,7 @@ class InputBox extends React.Component {
             )
 
         const teamsUrl = `https://nbastatsvideoapi-n4b6xkst7q-de.a.run.app/teams`;
+
         fetch(teamsUrl)
             .then(res => res.json())
             .then(
@@ -42,7 +44,7 @@ class InputBox extends React.Component {
     }
 
     makeRequest = () => {
-        let playerId = jsonData[this.state.playerName]
+        let playerId = this.state.players[this.state.playerName]
         const url = `https://nbastatsvideoapi-n4b6xkst7q-de.a.run.app/videos?player_id=${playerId}`;
         fetch(url)
             .then(res => res.json())
@@ -54,6 +56,10 @@ class InputBox extends React.Component {
                     console.log(error)
                 }
             )
+    }
+
+    componentDidMount() {
+        this.getPlayersAndTeams()
     }
 
     render() {

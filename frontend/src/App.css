@@ -12,28 +12,23 @@ body {
   justify-content: center;
 }
 
-.video-player {
-  display: flex;
-  justify-content: center;
-}
-
 video {
   border-radius: 20px; 
 }
 
-.horizontal-next {
-  margin-top: 50px;
-  margin-left: 20px;
-  margin-right: 50px;
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+.video-player {
+  margin-top: 40px;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .shots-table {
+  margin-top: 40px;
   width: 450px;
   height: 700px;
   overflow:auto;

@@ -23,10 +23,8 @@ class MainContent extends React.Component {
         return (
             <div className="main-content">
                 <InputBox setShots={this.setShots}/>
-                <div className="horizontal-next">
-                    <SidePanelTable setVideo={this.setVideo} shots={this.state.shots}/>
-                    <VideoPlayer src={this.state.video}/>
-                </div>
+                <VideoPlayer src={this.state.video}/>
+                <SidePanelTable setVideo={this.setVideo} shots={this.state.shots}/>
             </div>
         )
     }
