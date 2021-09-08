@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/NBAVideoWebsite/static/css/main.afebe5bd.chunk.css",
-    "main.js": "/NBAVideoWebsite/static/js/main.074e7458.chunk.js",
-    "main.js.map": "/NBAVideoWebsite/static/js/main.074e7458.chunk.js.map",
+    "main.css": "/NBAVideoWebsite/static/css/main.3d18c599.chunk.css",
+    "main.js": "/NBAVideoWebsite/static/js/main.d82836c7.chunk.js",
+    "main.js.map": "/NBAVideoWebsite/static/js/main.d82836c7.chunk.js.map",
     "runtime-main.js": "/NBAVideoWebsite/static/js/runtime-main.620b709b.js",
     "runtime-main.js.map": "/NBAVideoWebsite/static/js/runtime-main.620b709b.js.map",
     "static/css/2.a1426ca7.chunk.css": "/NBAVideoWebsite/static/css/2.a1426ca7.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.ac168f48.chunk.js.map": "/NBAVideoWebsite/static/js/3.ac168f48.chunk.js.map",
     "index.html": "/NBAVideoWebsite/index.html",
     "static/css/2.a1426ca7.chunk.css.map": "/NBAVideoWebsite/static/css/2.a1426ca7.chunk.css.map",
-    "static/css/main.afebe5bd.chunk.css.map": "/NBAVideoWebsite/static/css/main.afebe5bd.chunk.css.map",
+    "static/css/main.3d18c599.chunk.css.map": "/NBAVideoWebsite/static/css/main.3d18c599.chunk.css.map",
     "static/js/2.b06218cd.chunk.js.LICENSE.txt": "/NBAVideoWebsite/static/js/2.b06218cd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.620b709b.js",
     "static/css/2.a1426ca7.chunk.css",
     "static/js/2.b06218cd.chunk.js",
-    "static/css/main.afebe5bd.chunk.css",
-    "static/js/main.074e7458.chunk.js"
+    "static/css/main.3d18c599.chunk.css",
+    "static/js/main.d82836c7.chunk.js"
   ]
 }
