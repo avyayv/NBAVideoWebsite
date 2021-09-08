@@ -14,9 +14,11 @@ class SidePanelTable extends React.Component {
             let thisVideoUrl = this.props.shots[x].VideoURL
             let thisRow = (
                 <tr onClick={this.tableRowClick}>
+                    <td videoUrl={thisVideoUrl}>{this.props.shots[x].TEAM_NAME}</td>
                     <td videoUrl={thisVideoUrl}>{this.props.shots[x].PLAYER_NAME}</td>
                     <td videoUrl={thisVideoUrl}>{this.props.shots[x].SHOT_DISTANCE}</td>
                     <td videoUrl={thisVideoUrl}>{this.props.shots[x].SHOT_MADE_FLAG}</td>
+                    <td videoUrl={thisVideoUrl}>{this.props.shots[x].Description}</td>
                 </tr>
             )
             allRows.push(thisRow)
@@ -28,9 +30,11 @@ class SidePanelTable extends React.Component {
 
                     <thead>
                         <tr>
-                            <th>Shooter</th>
-                            <th>Shot Distance</th>
-                            <th>Shot Made</th>
+                            <th>Team</th>
+                            <th>Player</th>
+                            <th>Distance</th>
+                            <th>Made</th>
+                            <th>Description</th>
                         </tr> 
                     </thead>
 
