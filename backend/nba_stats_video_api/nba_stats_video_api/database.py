@@ -31,14 +31,23 @@ def init_tcp_connection_engine():
         ),
     )
     pool.dialect.description_encoding = None
+
+    return pool 
+
+def get_name_to_id(pool, player_or_team: str):
+    with pool.connect() as con:
+        res = con.execute(f"SELECT DISTINCT \"{player_or_team}_ID\", \"{player_or_team}_NAME\" FROM videos;")
+        name_to_id = {}
+        for r in res:
+            name_to_id[r[f"{player_or_team}_NAME"]] = r[f"{player_or_team}_ID"]
+
+        return name_to_id 
+
+def execute_query(pool, player_id: str, team_id: str):
+    
     Session = sessionmaker(bind=pool)
     session = Session()
 
-    return session
-
-
-def execute_query(session, player_id: str, team_id: str):
-    
     all_vids = session.query(orm.Videos)
 
     if player_id != None:
