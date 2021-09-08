@@ -7,7 +7,7 @@ class Videos(Base):
     __tablename__ = 'videos'
 
     GameID = Column(BigInteger, primary_key=True)
-    GameEventID = Column(Integer, primary_key=True)
+    EventID = Column(Integer, primary_key=True)
     GameDate = Column(String(32))
     Season = Column(String(8))
     PLAYER_ID = Column(BigInteger)
