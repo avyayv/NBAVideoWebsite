@@ -142,6 +142,7 @@ class VideoScraper:
                     "GameID",
                     "EventID",
                     "GameDate",
+                    "Season",
                     "PLAYER_ID",
                     "PLAYER_NAME",
                     "Description",
@@ -166,6 +167,8 @@ class VideoScraper:
                     left_on=["GameID", "EventID"],
                     right_on=["GAME_ID", "GAME_EVENT_ID"],
                 )
+
+                full_team_df["Season"] = season 
 
                 all_teams_df = pd.concat([all_teams_df, full_team_df])[columns]
 
