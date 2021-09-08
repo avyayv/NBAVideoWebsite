@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/NBAVideoWebsite/static/css/main.3d18c599.chunk.css",
-    "main.js": "/NBAVideoWebsite/static/js/main.d82836c7.chunk.js",
-    "main.js.map": "/NBAVideoWebsite/static/js/main.d82836c7.chunk.js.map",
+    "main.js": "/NBAVideoWebsite/static/js/main.314ffe9e.chunk.js",
+    "main.js.map": "/NBAVideoWebsite/static/js/main.314ffe9e.chunk.js.map",
     "runtime-main.js": "/NBAVideoWebsite/static/js/runtime-main.620b709b.js",
     "runtime-main.js.map": "/NBAVideoWebsite/static/js/runtime-main.620b709b.js.map",
     "static/css/2.a1426ca7.chunk.css": "/NBAVideoWebsite/static/css/2.a1426ca7.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.a1426ca7.chunk.css",
     "static/js/2.b06218cd.chunk.js",
     "static/css/main.3d18c599.chunk.css",
-    "static/js/main.d82836c7.chunk.js"
+    "static/js/main.314ffe9e.chunk.js"
   ]
 }
