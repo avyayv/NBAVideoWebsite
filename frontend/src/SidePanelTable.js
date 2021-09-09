@@ -1,6 +1,6 @@
 import React from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter,  numberFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 class SidePanelTable extends React.Component {
@@ -21,10 +21,6 @@ class SidePanelTable extends React.Component {
           }, {
             dataField: 'team',
             text: 'Team',
-            filter: textFilter()
-          }, {
-            dataField: 'player',
-            text: 'Player',
             filter: textFilter()
           }, {
             dataField: 'gameTeams',
@@ -50,12 +46,7 @@ class SidePanelTable extends React.Component {
             text: 'Distance (ft.)',
             sort: true,
             filter: numberFilter()
-          }, 
-          {
-            dataField: 'description',
-            text: 'Description',
-            filter: textFilter()
-        }, {
+          }, {
             dataField: 'made',
             text: 'Made Shot',
             headerStyle: (colum, colIndex) => {

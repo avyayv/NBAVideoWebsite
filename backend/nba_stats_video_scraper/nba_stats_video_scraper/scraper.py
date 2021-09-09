@@ -11,7 +11,7 @@ from nba_stats_video_scraper import database
 class VideoScraper:
     def __init__(self):
 
-        self.seasons = ["2020-21"]
+        self.seasons = ["2015-16", "2016-17", "2017-18", "2018-19", "2019-20", "2020-21"]
         self.season_types = ["Regular+Season", "PlayIn", "Playoffs"]
         self.context_measures = ["FGA"] #, "PF", "REB", "TOV"]
 
@@ -184,7 +184,7 @@ class VideoScraper:
                 else:
                     team_to_number_of_attempts[team] = 1
 
-                if team_to_number_of_attempts[team] < 5:
+                if team_to_number_of_attempts[team] < 10:
                     teams.append(team)
 
                 continue
