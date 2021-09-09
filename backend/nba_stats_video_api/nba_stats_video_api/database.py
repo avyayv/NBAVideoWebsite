@@ -4,6 +4,7 @@ import os
 import sqlalchemy
 from dotenv import load_dotenv
 from sqlalchemy.orm import sessionmaker
+from functools import lru_cache
 
 from nba_stats_video_api import orm
 
@@ -34,6 +35,7 @@ def init_tcp_connection_engine():
 
     return pool 
 
+@lru_cache
 def get_name_to_id(pool, player_or_team: str):
     with pool.connect() as con:
         res = con.execute(f"SELECT DISTINCT \"{player_or_team}_ID\", \"{player_or_team}_NAME\" FROM videos;")
