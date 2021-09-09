@@ -2,6 +2,7 @@ import React from 'react';
 import SidePanelTable from './SidePanelTable';
 import InputBox from './InputBox';
 import VideoPlayer from './VideoPlayer';
+import {Container} from 'react-bootstrap';
 
 class MainContent extends React.Component {
     constructor(props) {
@@ -21,11 +22,11 @@ class MainContent extends React.Component {
 
     render() {
         return (
-            <div className="main-content">
+            <Container className="main-content">
                 <InputBox setShots={this.setShots}/>
                 <VideoPlayer src={this.state.video}/>
                 <SidePanelTable setVideo={this.setVideo} shots={this.state.shots}/>
-            </div>
+            </Container>
         )
     }
 }

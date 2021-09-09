@@ -76,7 +76,7 @@ class InputBox extends React.Component {
                             onChange={selected => this.setState({ playerName: selected })}
                         />
 
-                        <Button variant="success" onClick={this.makeRequest} id="button-addon2">
+                        <Button onClick={this.makeRequest} id="button-addon2">
                             Search 
                         </Button>
                     </InputGroup>

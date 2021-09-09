@@ -8,7 +8,7 @@ body {
 
 .search-div {
   display: flex;
-  margin-top: 30px;
+  margin-top: 15px;
   justify-content: center;
 }
 
@@ -17,10 +17,10 @@ video {
 }
 
 .video-player {
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
-.main-content {
+.container.main-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,8 +28,36 @@ video {
 }
 
 .shots-table {
-  margin-top: 40px;
-  width: 450px;
-  height: 700px;
-  overflow:auto;
+  margin-top: 15px;
+}
+
+th {
+  background-color: rgb(228, 228, 228) !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.number-filter-input.form-control {
+  width: 75% !important;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
