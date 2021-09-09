@@ -72,6 +72,7 @@ class InputBox extends React.Component {
                             id="basic-typeahead-single"
                             placeholder="Player Name"
                             aria-describedby="basic-addon1"
+                            emptyLabel="Loading..."
                             options={Object.keys(this.state.players)}
                             onChange={selected => this.setState({ playerName: selected })}
                         />

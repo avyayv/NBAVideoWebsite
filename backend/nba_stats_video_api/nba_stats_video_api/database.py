@@ -39,7 +39,8 @@ def get_name_to_id(pool, player_or_team: str):
         res = con.execute(f"SELECT DISTINCT \"{player_or_team}_ID\", \"{player_or_team}_NAME\" FROM videos;")
         name_to_id = {}
         for r in res:
-            name_to_id[r[f"{player_or_team}_NAME"]] = r[f"{player_or_team}_ID"]
+            if r[f"{player_or_team}_NAME"] != None:
+                name_to_id[r[f"{player_or_team}_NAME"]] = r[f"{player_or_team}_ID"]
 
         return name_to_id 
 
