@@ -18,7 +18,7 @@ def home():
     response_dict = database.execute_query(pool, player_id, team_id)
 
     response = jsonify(response_dict)
-    response.headers.add('Access-Control-Allow-Origin', 'https://avyayv.github.io')
+    response.headers.add('Access-Control-Allow-Origin', 'https://film.analyzeball.com')
 
     return response 
 
@@ -27,7 +27,7 @@ def players():
 
     response_dict = database.get_name_to_id(pool, "PLAYER")
     response = jsonify(response_dict)
-    response.headers.add('Access-Control-Allow-Origin', 'https://avyayv.github.io')
+    response.headers.add('Access-Control-Allow-Origin', 'https://film.analyzeball.com')
 
     return response 
 
@@ -36,7 +36,7 @@ def teams():
 
     response_dict = database.get_name_to_id(pool, "TEAM")
     response = jsonify(response_dict)
-    response.headers.add('Access-Control-Allow-Origin', 'https://avyayv.github.io')
+    response.headers.add('Access-Control-Allow-Origin', 'https://film.analyzeball.com')
 
     return response 
 
