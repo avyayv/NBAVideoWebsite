@@ -73,22 +73,20 @@ class SidePanelTable extends React.Component {
             allRows.push(thisRow)
         }
 
-        if (allRows.size > 0) {
-          return (
-              <div className="shots-table w-100">
-                  <BootstrapTable 
-                      keyField="d" 
-                      hover
-                      condensed 
-                      data={ allRows } 
-                      columns={ columns } 
-                      rowEvents={ tableRowEvents }  
-                      filter={ filterFactory() } 
-                      pagination={ paginationFactory() }/>
-              </div>
-          )
-        }
-        return null;
+
+        return (
+            <div className="shots-table w-100">
+                <BootstrapTable 
+                    keyField="d" 
+                    hover
+                    condensed 
+                    data={ allRows } 
+                    columns={ columns } 
+                    rowEvents={ tableRowEvents }  
+                    filter={ filterFactory() } 
+                    pagination={ paginationFactory() }/>
+            </div>
+        )
     }
 }
 export default SidePanelTable
