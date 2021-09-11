@@ -169,7 +169,9 @@ class VideoScraper:
                     right_on=["GAME_ID", "GAME_EVENT_ID"],
                 )
 
-                full_team_df["OtherPeriodsSecRemaining"] = np.max(4 - full_team_df["PERIOD"], 0)
+                full_team_df["OtherPeriodsSecRemaining"] = np.greater(4-full_team_df["PERIOD"], 0) \
+                    .astype(int) * \
+                    (4-full_team_df["PERIOD"]) 
 
                 full_team_df["SecondsRemaining"] = \
                     (full_team_df["OtherPeriodsSecRemaining"] * 12 * 60) + \
@@ -198,7 +200,7 @@ class VideoScraper:
                 else:
                     team_to_number_of_attempts[team] = 1
 
-                if team_to_number_of_attempts[team] < 10:
+                if team_to_number_of_attempts[team] < 20:
                     teams.append(team)
 
                 continue
