@@ -52,10 +52,12 @@ class SidePanelTable extends React.Component {
           }, {
             dataField: 'secsRemaining',
             text: 'Sec. Remain',
+            sort: true,
             filter: numberFilter()
           }, {
             dataField: 'scoreMargin',
             text: 'Score Margin',
+            sort: true,
             filter: numberFilter()
           }, {
             dataField: 'made',
@@ -81,7 +83,7 @@ class SidePanelTable extends React.Component {
                 'videoUrl': this.props.shots[x].VideoURL,
                 'season': this.props.shots[x].Season,
                 'secsRemaining': this.props.shots[x].SecondsRemaining,
-                'scoreMargin': this.props.shots[x].scoreMargin
+                'scoreMargin': this.props.shots[x].ScoreDiff
             }
             allRows.push(thisRow)
         }
