@@ -23,6 +23,8 @@ class Videos(Base):
     HomeTeam = Column(String(16))
     AwayTeam = Column(String(16))
     VideoURL = Column(String(256))
+    ScoreDiff = Column(Integer)
+    SecondsRemaining = Column(Integer)
 
     def as_dict(self):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
