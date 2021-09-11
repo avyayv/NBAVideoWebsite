@@ -17,6 +17,9 @@ class SidePanelTable extends React.Component {
           {
             dataField: 'season',
             text: 'Season',
+            headerStyle: (colum, colIndex) => {
+                return { width: '110px'};
+            },
             filter: textFilter(),
           }, {
             dataField: 'team',
@@ -47,6 +50,14 @@ class SidePanelTable extends React.Component {
             sort: true,
             filter: numberFilter()
           }, {
+            dataField: 'secsRemaining',
+            text: 'Sec. Remain',
+            filter: numberFilter()
+          }, {
+            dataField: 'scoreMargin',
+            text: 'Score Margin',
+            filter: numberFilter()
+          }, {
             dataField: 'made',
             text: 'Made Shot',
             headerStyle: (colum, colIndex) => {
@@ -68,7 +79,9 @@ class SidePanelTable extends React.Component {
                 'description': this.props.shots[x].Description,
                 'gameTeams': this.props.shots[x].AwayTeam + '@' + this.props.shots[x].HomeTeam,
                 'videoUrl': this.props.shots[x].VideoURL,
-                'season': this.props.shots[x].Season
+                'season': this.props.shots[x].Season,
+                'secsRemaining': this.props.shots[x].SecondsRemaining,
+                'scoreMargin': this.props.shots[x].scoreMargin
             }
             allRows.push(thisRow)
         }
