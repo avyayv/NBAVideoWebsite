@@ -4,6 +4,7 @@ from typing import List
 
 import pandas as pd
 import requests
+import numpy as np
 
 from nba_stats_video_scraper import database
 
@@ -11,7 +12,7 @@ from nba_stats_video_scraper import database
 class VideoScraper:
     def __init__(self):
 
-        self.seasons = ["2015-16", "2016-17", "2017-18", "2018-19", "2019-20", "2020-21"]
+        self.seasons = ["2018-19", "2019-20", "2020-21"]
         self.season_types = ["Regular+Season", "PlayIn", "Playoffs"]
         self.context_measures = ["FGA"] #, "PF", "REB", "TOV"]
 
@@ -93,8 +94,6 @@ class VideoScraper:
             try:
                 team_video_url = self.get_video_url(team, season, season_type, context_measure)
 
-                print(team, season, season_type)
-
                 time.sleep(2)
                 team_video_json = requests.get(
                     team_video_url, headers=self.headers
@@ -158,6 +157,8 @@ class VideoScraper:
                     "AwayTeam",
                     "HomeTeamScore",
                     "AwayTeamScore",
+                    "ScoreDiff",
+                    "SecondsRemaining",
                 ]
 
                 full_team_df = pd.merge(
@@ -167,6 +168,19 @@ class VideoScraper:
                     left_on=["GameID", "EventID"],
                     right_on=["GAME_ID", "GAME_EVENT_ID"],
                 )
+
+                full_team_df["OtherPeriodsSecRemaining"] = np.max(4 - full_team_df["PERIOD"], 0)
+
+                full_team_df["SecondsRemaining"] = \
+                    (full_team_df["OtherPeriodsSecRemaining"] * 12 * 60) + \
+                    full_team_df["MINUTES_REMAINING"] * 60 + \
+                    full_team_df["SECONDS_REMAINING"]
+                
+                team_id_to_abbr = {1610612737: 'ATL', 1610612738: 'BOS', 1610612751: 'BKN', 1610612766: 'CHA', 1610612741: 'CHI', 1610612739: 'CLE', 1610612742: 'DAL', 1610612743: 'DEN', 1610612765: 'DET', 1610612744: 'GSW', 1610612745: 'HOU', 1610612754: 'IND', 1610612746: 'LAC', 1610612747: 'LAL', 1610612763: 'MEM', 1610612748: 'MIA', 1610612749: 'MIL', 1610612750: 'MIN', 1610612740: 'NOP', 1610612752: 'NYK', 1610612760: 'OKC', 1610612753: 'ORL', 1610612755: 'PHI', 1610612756: 'PHX', 1610612757: 'POR', 1610612758: 'SAC', 1610612759: 'SAS', 1610612761: 'TOR', 1610612762: 'UTA', 1610612764: 'WAS'}
+
+                full_team_df["TeamAbbr"] = full_team_df["TEAM_ID"].map(team_id_to_abbr)
+                full_team_df["PlayerIsHomeTeam"] = (full_team_df["TeamAbbr"] == full_team_df["HomeTeam"]).astype(int).replace(0, -1)
+                full_team_df["ScoreDiff"] = full_team_df["PlayerIsHomeTeam"] * (full_team_df["HomeTeamScore"] - full_team_df["AwayTeamScore"])
 
                 full_team_df["Season"] = season 
 
@@ -200,6 +214,7 @@ class VideoScraper:
         for context_measure in self.context_measures:
             for season in self.seasons:
                 for season_type in self.season_types:
+                    print(context_measure, season, season_type)
                     season_season_type_df = self.get_videos_df(season, season_type, context_measure)
                     self.all_data = pd.concat([self.all_data, season_season_type_df])
 
