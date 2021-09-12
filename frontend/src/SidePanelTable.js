@@ -5,6 +5,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 
 class SidePanelTable extends React.Component {
 
+
     render() {
 
         const tableRowEvents = {
@@ -58,6 +59,7 @@ class SidePanelTable extends React.Component {
             dataField: 'scoreMargin',
             text: 'Score Margin',
             sort: true,
+            filterValue: (cell, row) => Math.abs(cell),
             filter: numberFilter()
           }, {
             dataField: 'made',
